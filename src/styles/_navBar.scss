@@ -1,0 +1,19 @@
+div.navBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  img {
+    margin: 0.3rem;
+    width: 16vw;
+    height: 6vw;
+  }
+  ul {
+    display: flex;
+    li {
+      list-style-type: none;
+      font-size: 20px;
+      padding: 0.5rem 1.5rem;
+    }
+  }
+}

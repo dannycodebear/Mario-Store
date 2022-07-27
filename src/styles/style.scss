@@ -1,0 +1,33 @@
+div.homePage {
+  width: 100%;
+  padding-top: 0.5rem;
+  // background-color: rgba(0, 0, 0, 0.3);
+  // background-blend-mode: multiply;
+  // background-image: url("../photo/Background-image.png");
+  // background-size: cover;
+  div.bar {
+    background-color: antiquewhite;
+    margin-bottom: 1rem;
+    ul {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      li {
+        font-size: 20px;
+        list-style-type: none;
+      }
+    }
+  }
+
+  div.introImage {
+    img {
+      display: block;
+      margin: auto;
+      width: 25vw;
+      height: 40vw;
+    }
+  }
+}
+
+@import "../global/global";
+@import "./navBar";
