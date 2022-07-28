@@ -1,7 +1,7 @@
 div.homePage {
   width: 100%;
   padding-top: 0.5rem;
-  // background-color: rgba(0, 0, 0, 0.3);
+  // background-color: rgba(100, 95, 95, 0.3);
   // background-blend-mode: multiply;
   // background-image: url("../photo/Background-image.png");
   // background-size: cover;
@@ -25,6 +25,70 @@ div.homePage {
       margin: auto;
       width: 25vw;
       height: 40vw;
+    }
+  }
+
+  div {
+    h2 {
+      margin-left: 1rem;
+    }
+  }
+
+  div.itemCategories {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 1rem;
+    max-width: 100%;
+    a {
+      margin: 0rem 0.5rem;
+      padding: 1rem 2rem;
+      border: 1px solid black;
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+
+      img {
+        margin-right: 1rem;
+        width: 3vw;
+        height: 3vw;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+
+  div.itemsPreview {
+    display: flex;
+    justify-content: space-around;
+    margin: 2rem 0rem;
+    max-width: 100%;
+    div.item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid black;
+      padding: 1rem 2rem;
+      margin: 0rem 0.5rem;
+      img {
+        width: 8vw;
+        height: 8vw;
+      }
+      p {
+        font-size: 20px;
+      }
+      p.price {
+        color: red;
+      }
+      div {
+        display: flex;
+        flex-wrap: wrap;
+        a {
+          padding: 0.3rem 0.5rem;
+          margin: 0rem 0.3rem;
+          border: 1px solid black;
+        }
+      }
     }
   }
 }

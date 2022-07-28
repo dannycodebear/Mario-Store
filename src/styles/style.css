@@ -31,6 +31,97 @@ div.homePage div.introImage img {
   height: 40vw;
 }
 
+div.homePage div h2 {
+  margin-left: 1rem;
+}
+
+div.homePage div.itemCategories {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 2rem 1rem;
+  max-width: 100%;
+}
+
+div.homePage div.itemCategories a {
+  margin: 0rem 0.5rem;
+  padding: 1rem 2rem;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div.homePage div.itemCategories a img {
+  margin-right: 1rem;
+  width: 3vw;
+  height: 3vw;
+}
+
+div.homePage div.itemCategories a p {
+  font-size: 16px;
+}
+
+div.homePage div.itemsPreview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin: 2rem 0rem;
+  max-width: 100%;
+}
+
+div.homePage div.itemsPreview div.item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid black;
+  padding: 1rem 2rem;
+  margin: 0rem 0.5rem;
+}
+
+div.homePage div.itemsPreview div.item img {
+  width: 8vw;
+  height: 8vw;
+}
+
+div.homePage div.itemsPreview div.item p {
+  font-size: 20px;
+}
+
+div.homePage div.itemsPreview div.item p.price {
+  color: red;
+}
+
+div.homePage div.itemsPreview div.item div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+div.homePage div.itemsPreview div.item div a {
+  padding: 0.3rem 0.5rem;
+  margin: 0rem 0.3rem;
+  border: 1px solid black;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -39,6 +130,7 @@ div.homePage div.introImage img {
 }
 
 body {
+  margin: 0rem 5rem;
   font-family: "Roboto", sans-serif;
 }
 
@@ -60,7 +152,7 @@ div.navBar {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 100%;
+  max-width: 100%;
 }
 
 div.navBar img {
