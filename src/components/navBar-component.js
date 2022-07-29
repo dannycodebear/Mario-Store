@@ -20,6 +20,22 @@ const NavBarComponent = () => {
           </li>
         </ul>
       </div>
+      <div className="bar">
+        <ul>
+          <li>
+            <Link to="/categories">實用道具</Link>
+          </li>
+          <li>
+            <Link to="/categories">百變服裝</Link>
+          </li>
+          <li>
+            <Link to="/categories/">怪物收藏</Link>
+          </li>
+          <li>
+            <Link to="/categories">購物商城</Link>
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

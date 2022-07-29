@@ -11,7 +11,7 @@ const HomeComponent = (props) => {
   useEffect(() => {
     const IntervalId = setInterval(() => {
       setCurrentIndex((prev) => (prev === Images.length - 1 ? 0 : prev + 1));
-    }, 1000);
+    }, 3000);
 
     return () => {
       clearInterval(IntervalId);
@@ -21,8 +21,8 @@ const HomeComponent = (props) => {
   // Auto Change Items Preview
   useEffect(() => {
     const IntervalId = setInterval(() => {
-      setCurrentItemIndex((prev) => (prev === itemsPreview.length - 1 ? 0 : prev + 1));
-    }, 2000);
+      setCurrentItemIndex((prev) => (prev === 4 ? 0 : prev + 1));
+    }, 3000);
 
     return () => {
       clearInterval(IntervalId);
@@ -31,24 +31,6 @@ const HomeComponent = (props) => {
 
   return (
     <div className="homePage">
-      <div className="bar">
-        <ul>
-          {currentIndex == 0 && (
-            <li>
-              <Link to="/">實用道具</Link>
-            </li>
-          )}
-          <li>
-            <Link to="/">百變服裝</Link>
-          </li>
-          <li>
-            <Link to="/">怪物收藏</Link>
-          </li>
-          <li>
-            <Link to="/">購物商城</Link>
-          </li>
-        </ul>
-      </div>
       <div className="introImage">
         <img src={Images[currentIndex]} alt="" />
       </div>
@@ -84,57 +66,131 @@ const HomeComponent = (props) => {
       </div>
       <div className="itemsPreview">
         {/* item 1 */}
-        <div className="item">
-          <img src={itemsPreview[currentItemIndex]} alt="" />
-          <br />
-          <p>紅色長大蘑菇</p>
-          <br />
-          <p className="price">1000金幣</p>
-          <br />
-          <div>
-            <a href="">瞭解更多</a>
-            <a href="">加入購物車</a>
+        {currentItemIndex == 0 && (
+          <div className="item">
+            <img src={require("../photo/red-mushroom.png")} alt="" />
+            <br />
+            <p>紅色長大蘑菇</p>
+            <br />
+            <p className="price">1000金幣</p>
+            <br />
+            <div>
+              <a href="https://www.youtube.com/">瞭解更多</a>
+              <a href="">加入購物車</a>
+            </div>
           </div>
-        </div>
+        )}
+
         {/* item 2 */}
-        <div className="item">
-          <img src={require("../photo/block.png")} alt="" />
-          <br />
-          <p>神秘的方塊</p>
-          <br />
-          <p className="price">350金幣</p>
-          <br />
-          <div>
-            <a href="">瞭解更多</a>
-            <a href="">加入購物車</a>
+        {currentItemIndex < 2 && (
+          <div className="item">
+            <img src={require("../photo/block.png")} alt="" />
+            <br />
+            <p>神秘的方塊</p>
+            <br />
+            <p className="price">350金幣</p>
+            <br />
+            <div>
+              <a href="https://www.facebook.com/">瞭解更多</a>
+              <a href="">加入購物車</a>
+            </div>
           </div>
-        </div>
+        )}
+
         {/* item 3 */}
-        <div className="item">
-          <img src={require("../photo/warp-pipe.png")} alt="" />
-          <br />
-          <p>未知的水管</p>
-          <br />
-          <p className="price">520金幣</p>
-          <br />
-          <div>
-            <a href="">瞭解更多</a>
-            <a href="">加入購物車</a>
+        {currentItemIndex < 3 && (
+          <div className="item">
+            <img src={require("../photo/warp-pipe.png")} alt="" />
+            <br />
+            <p>未知的水管</p>
+            <br />
+            <p className="price">520金幣</p>
+            <br />
+            <div>
+              <a href="">瞭解更多</a>
+              <a href="">加入購物車</a>
+            </div>
           </div>
-        </div>
+        )}
+
         {/* item 4 */}
-        <div className="item">
-          <img src={require("../photo/coin.png")} alt="" />
-          <br />
-          <p>瑪利歐通用貨幣</p>
-          <br />
-          <p className="price">10金幣</p>
-          <br />
-          <div>
-            <a href="">瞭解更多</a>
-            <a href="">加入購物車</a>
+        {currentItemIndex < 4 && (
+          <div className="item">
+            <img src={require("../photo/coin.png")} alt="" />
+            <br />
+            <p>瑪利歐貨幣</p>
+            <br />
+            <p className="price">10金幣</p>
+            <br />
+            <div>
+              <a href="">瞭解更多</a>
+              <a href="">加入購物車</a>
+            </div>
           </div>
-        </div>
+        )}
+
+        {/* item 5 */}
+        {currentItemIndex > 0 && (
+          <div className="item">
+            <img src={require("../photo/penguin-clothe.png")} alt="" />
+            <br />
+            <p>企鵝套裝</p>
+            <br />
+            <p className="price">650金幣</p>
+            <br />
+            <div>
+              <a href="">瞭解更多</a>
+              <a href="">加入購物車</a>
+            </div>
+          </div>
+        )}
+
+        {/* item 6 */}
+        {currentItemIndex > 1 && (
+          <div className="item">
+            <img src={require("../photo/Kuba.png")} alt="" />
+            <br />
+            <p>庫巴公仔</p>
+            <br />
+            <p className="price">3500金幣</p>
+            <br />
+            <div>
+              <a href="">瞭解更多</a>
+              <a href="">加入購物車</a>
+            </div>
+          </div>
+        )}
+        {/* item 7 */}
+        {currentItemIndex > 2 && (
+          <div className="item">
+            <img src={require("../photo/turtle-monster.png")} alt="" />
+            <br />
+            <p>烏龜公仔</p>
+            <br />
+            <p className="price">2000金幣</p>
+            <br />
+            <div>
+              <a href="">瞭解更多</a>
+              <a href="">加入購物車</a>
+            </div>
+          </div>
+        )}
+
+        {/* item 8 */}
+        {currentItemIndex > 3 && (
+          <div className="item">
+            <img src={require("../photo/blue-mushroom.png")} alt="" />
+            <br />
+            <p>藍色縮小蘑菇</p>
+            <br />
+            <p className="price">1000金幣</p>
+            <br />
+            <div>
+              <a href="">瞭解更多</a>
+              <a href="">加入購物車</a>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
