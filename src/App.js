@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import NavBarComponent from "./components/navBar-component";
 import HomeComponent from "./components/home-component";
+import CategoriesComponent from "./components/categories-component";
 // 引入圖片 自動變換
 import Mario from "./photo/Mario.png";
 import Koopa from "./photo/koopa.png";
@@ -35,6 +36,7 @@ function App() {
       <NavBarComponent />
       <Routes>
         <Route path="/" element={<HomeComponent Images={Images} itemsPreview={itemsPreview} />} />
+        <Route path="/categories" element={<CategoriesComponent Images={Images} />} />
       </Routes>
     </div>
   );
