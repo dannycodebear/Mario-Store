@@ -6,7 +6,7 @@ const CategoriesComponent = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const preventRefresh = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
   };
 
   // Auto Change Images
@@ -37,7 +37,7 @@ const CategoriesComponent = (props) => {
 
       <div className="section">
         <div className="itemCategories">
-          <a href="/" onClick={preventRefresh}>
+          <a href="" onClick={preventRefresh}>
             <img src={require("../photo/fire-icon.png")} alt="" />
             <p>所有商品</p>
           </a>
