@@ -37,7 +37,7 @@ const CategoriesComponent = (props) => {
 
       <div className="section">
         <div className="itemCategories">
-          <a href="" onClick={preventRefresh}>
+          <a href="/" onClick={preventRefresh}>
             <img src={require("../photo/fire-icon.png")} alt="" />
             <p>所有商品</p>
           </a>
