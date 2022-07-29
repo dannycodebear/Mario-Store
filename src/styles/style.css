@@ -176,13 +176,6 @@ div.bar ul li {
   list-style-type: none;
 }
 
-div.introImage img {
-  display: block;
-  margin: auto;
-  width: 25vw;
-  height: 40vw;
-}
-
 div div.itemCategoriesString p {
   margin-left: 1rem;
   font-size: 20px;
@@ -196,18 +189,16 @@ div div.section {
 }
 
 div div.section div.itemCategories {
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   margin: 2rem 0.5rem;
-  width: 17%;
+  width: 20%;
 }
 
 div div.section div.itemCategories a {
   margin: 0.5rem;
-  padding: 1rem 2rem;
+  padding: 0.75rem 2rem 1rem 0.75rem;
   border: 1px solid black;
   border-radius: 5px;
   display: -webkit-box;
@@ -248,10 +239,12 @@ div div.section div.container div.itemImages {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  margin-left: 38px;
+  margin-left: 5rem;
 }
 
 div div.section div.container div.itemImages div.item {
+  width: 16rem;
+  height: 20rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -263,7 +256,7 @@ div div.section div.container div.itemImages div.item {
       -ms-flex-align: center;
           align-items: center;
   border: 1px solid black;
-  padding: 3rem 5rem;
+  padding: 3rem;
   margin: 0.5rem;
 }
 

@@ -1,12 +1,3 @@
-div.introImage {
-  img {
-    display: block;
-    margin: auto;
-    width: 25vw;
-    height: 40vw;
-  }
-}
-
 div {
   div.itemCategoriesString {
     p {
@@ -18,18 +9,16 @@ div {
     max-width: 100%;
     display: flex;
     div.itemCategories {
-      flex-wrap: wrap;
       justify-content: center;
       margin: 2rem 0.5rem;
-      width: 17%;
+      width: 20%;
       a {
         margin: 0.5rem;
-        padding: 1rem 2rem;
+        padding: 0.75rem 2rem 1rem 0.75rem;
         border: 1px solid black;
         border-radius: 5px;
         display: flex;
         align-items: center;
-
         img {
           margin-right: 1rem;
           width: 3vw;
@@ -47,19 +36,20 @@ div {
       }
       width: 83%;
       border: 1px solid black;
-
       margin: 2rem 0rem;
       div.itemImages {
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
-        margin-left: 38px;
+        margin-left: 5rem;
         div.item {
+          width: 16rem;
+          height: 20rem;
           display: flex;
           flex-direction: column;
           align-items: center;
           border: 1px solid black;
-          padding: 3rem 5rem;
+          padding: 3rem;
           margin: 0.5rem;
           img {
             width: 10vw;
