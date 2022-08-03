@@ -4,8 +4,7 @@ import mongoose from "mongoose";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
 dotenv.config();
-import exportAuthRouter from "./routes/auth.js";
-const authRouter = exportAuthRouter();
+import authRouter from "./routes/auth.js";
 
 mongoose
   .connect(process.env.DB_CONNECT)
