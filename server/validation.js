@@ -20,4 +20,15 @@ const loginValidation = (data) => {
   return schema.validate(data);
 };
 
-export { registerValidation, loginValidation };
+const itemValidation = (data) => {
+  const schema = Joi.object({
+    id: Joi.number().required(),
+    name: Joi.string().required(),
+    description: Joi.string().required(),
+    price: Joi.number().required()
+  });
+
+  return schema.validate(data);
+};
+
+export { registerValidation, loginValidation, itemValidation };
