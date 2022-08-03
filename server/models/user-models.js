@@ -1,6 +1,12 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    required: true,
+    minLength: 2,
+    maxLength: 50
+  },
   email: {
     type: String,
     required: true,
@@ -30,6 +36,7 @@ userSchema.methods.isMember = function () {
 };
 
 // middleware
+// hash password before saved password
 userSchema.pre("save", async function (next) {
   if (this.isModified("password") || this.isNew) {
     const hash = await bcrypt.hash(this.password, 10);
@@ -49,4 +56,6 @@ userSchema.methods.comparePassword = function (password, cb) {
   });
 };
 
-module.exports = mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
+
+export default User;
