@@ -5,7 +5,7 @@ import User from "../models/user-models.js";
 import jwt from "jsonwebtoken";
 
 authRouter.use((req, res, next) => {
-  console.log("A Request is coming in to auth.js");
+  console.log("A Request is coming into auth.js");
   next();
 });
 
