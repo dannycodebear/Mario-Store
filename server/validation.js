@@ -22,10 +22,10 @@ const loginValidation = (data) => {
 
 const itemValidation = (data) => {
   const schema = Joi.object({
-    id: Joi.number().required(),
-    name: Joi.string().required(),
-    description: Joi.string().required(),
-    price: Joi.number().required()
+    id: Joi.number().min(0).max(9999).required(),
+    name: Joi.string().min(2).max(10).required(),
+    description: Joi.string().min(5).max(999).required(),
+    price: Joi.number().min(100).required()
   });
 
   return schema.validate(data);
