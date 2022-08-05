@@ -6,15 +6,16 @@ import jwt from "jsonwebtoken";
 
 authRouter.use((req, res, next) => {
   console.log("A Request is coming into auth.js");
+  console.log(req.body);
   next();
 });
 
-authRouter.get("/testAPI", (req, res) => {
-  const msgObj = {
-    message: "Test API is working"
-  };
-  return res.json(msgObj);
-});
+// authRouter.get("/testAPI", (req, res) => {
+//   const msgObj = {
+//     message: "Test API is working"
+//   };
+//   return res.json(msgObj);
+// });
 
 authRouter.post("/register", async (req, res) => {
   const { error } = registerValidation(req.body);
@@ -52,14 +53,15 @@ authRouter.post("/login", (req, res) => {
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
-  User.findOne({ email: req.body.email }, (err, user) => {
+  // 不能寫 arrow function, 裡面的值會被忽略
+  User.findOne({ email: req.body.email }, function (err, user) {
     if (err) {
       res.status(400).send(err);
     }
     if (!user) {
       res.status(401).send("Cannot found user");
     } else {
-      user.comparePassword(req.body.password, (err, isMatch) => {
+      user.comparePassword(req.body.password, function (err, isMatch) {
         if (err) {
           return res.status(400).send(err);
         }
@@ -67,6 +69,7 @@ authRouter.post("/login", (req, res) => {
           const tokenObject = { _id: user._id, email: user.email };
           const token = jwt.sign(tokenObject, process.env.PASSPORT_SECRET);
           res.send({ success: true, token: "JWT " + token, user });
+          console.log(user);
         } else {
           console.log(err);
           res.status(401).send("Password is wrong!!!!!");
