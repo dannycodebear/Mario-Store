@@ -5,9 +5,10 @@ const pst = (passport) => {
   const opts = {};
   opts.jwtFromRequest = ExtractJwt.fromAuthHeaderWithScheme("jwt");
   opts.secretOrKey = process.env.PASSPORT_SECRET;
+  // middleware protected items only admin can add
   passport.use(
     new JwtStrategy(opts, (jwt_payload, done) => {
-      User.findOne({ id: jwt_payload._id }, (err, user) => {
+      User.findOne({ _id: jwt_payload._id }, (err, user) => {
         if (err) {
           return done(err, false);
         }
