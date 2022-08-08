@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import NavBarComponent from "./components/navBar-component";
 import HomeComponent from "./components/home-component";
 import CategoriesComponent from "./components/categories-component";
+import LoginComponent from "./components/login-component";
 
 // 引入圖片 自動變換
 import Mario from "./photo/Mario.png";
@@ -38,6 +39,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomeComponent Images={Images} itemsPreview={itemsPreview} />} />
         <Route path="/categories" element={<CategoriesComponent Images={Images} />} />
+        <Route path="/login" element={<LoginComponent />} />
       </Routes>
     </div>
   );
