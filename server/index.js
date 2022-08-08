@@ -8,6 +8,7 @@ import itemRouter from "./routes/item-route.js";
 import { pst } from "./config/passport.js";
 import passport from "passport";
 pst(passport);
+import cors from "cors";
 
 mongoose
   .connect(process.env.DB_CONNECT)
@@ -21,6 +22,7 @@ mongoose
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 app.use("/api/user", authRouter);
 app.use("/api/items", passport.authenticate("jwt", { session: false }), itemRouter);
 
