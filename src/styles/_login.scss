@@ -1,0 +1,44 @@
+div.register-form {
+  div.changeMode {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0rem 1rem;
+  }
+  div.divInput {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    p {
+      font-size: 18px;
+    }
+
+    input {
+      border: none;
+      background-color: rgb(232, 227, 227);
+      border-radius: 10px;
+      padding: 0.3rem;
+      font-size: 18px;
+      min-width: 10rem;
+    }
+    input,
+    label {
+      margin: 1rem 0rem;
+    }
+  }
+  div.divButton {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0rem 1rem;
+    justify-content: center;
+  }
+  button {
+    max-width: 6rem;
+    margin: 1rem 0.2rem;
+    padding: 0.3rem 1rem;
+    border-radius: 5px;
+    border: none;
+    background-color: blanchedalmond;
+    cursor: pointer;
+  }
+}
