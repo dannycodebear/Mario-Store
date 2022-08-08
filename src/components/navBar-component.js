@@ -13,7 +13,7 @@ const NavBarComponent = () => {
             <Link to="/">關於</Link>
           </li>
           <li>
-            <Link to="/">登入</Link>
+            <Link to="/login">登入 / 註冊</Link>
           </li>
           <li>
             <Link to="/">購物車</Link>
