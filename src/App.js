@@ -1,7 +1,9 @@
 import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import NavBarComponent from "./components/navBar-component";
 import HomeComponent from "./components/home-component";
 import CategoriesComponent from "./components/categories-component";
+import RegisterComponent from "./components/register-component";
 import LoginComponent from "./components/login-component";
 
 // 引入圖片 自動變換
@@ -21,6 +23,10 @@ import TurtleMonster from "./photo/turtle-monster.png";
 import BlueMushroom from "./photo/blue-mushroom.png";
 
 function App() {
+  // 顯示登入和註冊 ＝ 0
+  // 顯示登入 ＝ 1
+  // 顯示註冊 ＝ 2
+  const [display, setDisplay] = useState(0);
   const Images = [Mario, Koopa, Luigi, Peach];
   const itemsPreview = [
     RedMushroom,
@@ -35,11 +41,18 @@ function App() {
 
   return (
     <div className="App">
-      <NavBarComponent />
+      <NavBarComponent display={display} setDisplay={setDisplay} />
       <Routes>
         <Route path="/" element={<HomeComponent Images={Images} itemsPreview={itemsPreview} />} />
         <Route path="/categories" element={<CategoriesComponent Images={Images} />} />
-        <Route path="/login" element={<LoginComponent />} />
+        <Route
+          path="/register"
+          element={<RegisterComponent display={display} setDisplay={setDisplay} />}
+        />
+        <Route
+          path="/login"
+          element={<LoginComponent display={display} setDisplay={setDisplay} />}
+        />
       </Routes>
     </div>
   );
