@@ -1,8 +1,14 @@
 div.register-form {
   div.changeMode {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0rem 1rem;
+    button {
+      margin: 1rem 0rem;
+      padding: 0.3rem 1rem;
+      border: 1px solid red;
+      border-collapse: collapse;
+      background-color: blanchedalmond;
+      pointer-events: auto;
+      cursor: pointer;
+    }
   }
   div.divInput {
     display: flex;
@@ -31,14 +37,14 @@ div.register-form {
     flex-wrap: wrap;
     margin: 0rem 1rem;
     justify-content: center;
-  }
-  button {
-    max-width: 6rem;
-    margin: 1rem 0.2rem;
-    padding: 0.3rem 1rem;
-    border-radius: 5px;
-    border: none;
-    background-color: blanchedalmond;
-    cursor: pointer;
+    button {
+      max-width: 6rem;
+      margin: 1rem 0.2rem;
+      padding: 0.3rem 1rem;
+      border-radius: 5px;
+      border: none;
+      background-color: blanchedalmond;
+      cursor: pointer;
+    }
   }
 }

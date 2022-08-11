@@ -273,13 +273,14 @@ div div.section div.container div.itemImages div.item p.price {
   color: red;
 }
 
-div.register-form div.changeMode {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  margin: 0rem 1rem;
+div.register-form div.changeMode button {
+  margin: 1rem 0rem;
+  padding: 0.3rem 1rem;
+  border: 1px solid red;
+  border-collapse: collapse;
+  background-color: blanchedalmond;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 div.register-form div.divInput {
@@ -324,7 +325,7 @@ div.register-form div.divButton {
           justify-content: center;
 }
 
-div.register-form button {
+div.register-form div.divButton button {
   max-width: 6rem;
   margin: 1rem 0.2rem;
   padding: 0.3rem 1rem;
