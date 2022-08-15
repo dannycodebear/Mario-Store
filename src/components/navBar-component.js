@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const NavBarComponent = () => {
+const NavBarComponent = (props) => {
+  const { display, setDisplay } = props;
   return (
     <div>
       <div className="navBar">
@@ -12,9 +13,21 @@ const NavBarComponent = () => {
           <li>
             <Link to="/">關於</Link>
           </li>
-          <li>
-            <Link to="/login">登入 / 註冊</Link>
-          </li>
+          {display == 0 && (
+            <li>
+              <Link to="/login">登入 / 註冊</Link>
+            </li>
+          )}
+          {display == 1 && (
+            <li>
+              <Link to="/register">註冊</Link>
+            </li>
+          )}
+          {display == 2 && (
+            <li>
+              <Link to="/">登入</Link>
+            </li>
+          )}
           <li>
             <Link to="/">購物車</Link>
           </li>
