@@ -1,5 +1,6 @@
 import express from "express";
 const itemRouter = express.Router();
+import multer from "multer";
 import { itemValidation } from "../validation.js";
 import Item from "../models/item-models.js";
 
@@ -7,6 +8,21 @@ itemRouter.use((req, res, next) => {
   console.log("A Request is coming into api");
 
   next();
+});
+
+// Setting Multer
+const upload = multer({
+  // 限定上傳大小為5Mb
+  limit: {
+    fileSize: 5000000
+  },
+  fileFilter(req, file, cb) {
+    // 限定上傳格式只能有這三種副檔名, $ 配對結尾而已
+    if (!file.originalname.match(/(png|jpg|jpeg)$/)) {
+      cb(new Error("Please upload correct image"));
+    }
+    cb(null, true);
+  }
 });
 
 // search one items (Read)
@@ -33,21 +49,23 @@ itemRouter.get("/", (req, res) => {
 });
 
 // add new items  (Create)
-itemRouter.post("/", async (req, res) => {
+itemRouter.post("/", upload.single("avatar"), async (req, res) => {
   const { error } = itemValidation(req.body);
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
-  const { id, name, description, price } = req.body;
+  const { id, name, description, price, avatar } = req.body;
   if (req.user.isMember()) {
     return res.status(400).send("Only admin can add new items");
   }
+  req.user.avatar = req.file.buffer;
 
   const newItem = new Item({
     id,
     name,
     description,
-    price
+    price,
+    avatar
   });
 
   try {
