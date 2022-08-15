@@ -16,6 +16,10 @@ const itemSchema = new mongoose.Schema({
   price: {
     type: Number,
     required: true
+  },
+  // Buffer 可以儲存2進位的照片資料
+  avatar: {
+    type: Buffer
   }
 });
 
