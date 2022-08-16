@@ -1,8 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import AuthService from "../service/auth-service.js";
 
 const NavBarComponent = (props) => {
   const { display, setDisplay } = props;
+  const navigate = useNavigate();
+  // 設定 logout 不需要給 function 包起來
+  const handleLogout = () => {
+    AuthService.logout();
+    window.alert("Logout success!!");
+    navigate("/");
+    setDisplay(0);
+  };
   return (
     <div>
       <div className="navBar">
@@ -25,7 +34,14 @@ const NavBarComponent = (props) => {
           )}
           {display == 2 && (
             <li>
-              <Link to="/">登入</Link>
+              <Link to="/login">登入</Link>
+            </li>
+          )}
+          {display == 3 && (
+            <li>
+              <a href="" onClick={handleLogout}>
+                登出
+              </a>
             </li>
           )}
           <li>
