@@ -54,18 +54,18 @@ itemRouter.post("/", upload.single("avatar"), async (req, res) => {
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
-  const { id, name, description, price, avatar } = req.body;
+  const { id, name, description, price } = req.body;
   if (req.user.isMember()) {
     return res.status(400).send("Only admin can add new items");
   }
+
   req.user.avatar = req.file.buffer;
 
   const newItem = new Item({
     id,
     name,
     description,
-    price,
-    avatar
+    price
   });
 
   try {
