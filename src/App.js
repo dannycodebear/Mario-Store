@@ -26,6 +26,7 @@ function App() {
   // 顯示登入和註冊 ＝ 0
   // 顯示登入 ＝ 1
   // 顯示註冊 ＝ 2
+  // 顯示登出 ＝ 3
   const [display, setDisplay] = useState(0);
   const Images = [Mario, Koopa, Luigi, Peach];
   const itemsPreview = [
@@ -43,7 +44,17 @@ function App() {
     <div className="App">
       <NavBarComponent display={display} setDisplay={setDisplay} />
       <Routes>
-        <Route path="/" element={<HomeComponent Images={Images} itemsPreview={itemsPreview} />} />
+        <Route
+          path="/"
+          element={
+            <HomeComponent
+              Images={Images}
+              itemsPreview={itemsPreview}
+              display={display}
+              setDisplay={setDisplay}
+            />
+          }
+        />
         <Route path="/categories" element={<CategoriesComponent Images={Images} />} />
         <Route
           path="/register"
