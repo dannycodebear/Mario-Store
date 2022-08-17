@@ -2,18 +2,10 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 
 const HomeComponent = (props) => {
-  const { display, setDisplay } = props;
   const { Images } = props;
   const { itemsPreview } = props;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
-
-  // 設定使用者登入時，navBar 永遠顯示登出
-  useEffect(() => {
-    if (localStorage.getItem("user")) {
-      setDisplay(3);
-    }
-  }, []);
 
   // Auto Change Images
   useEffect(() => {

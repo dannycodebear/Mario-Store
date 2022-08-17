@@ -10,13 +10,6 @@ authRouter.use((req, res, next) => {
   next();
 });
 
-// authRouter.get("/testAPI", (req, res) => {
-//   const msgObj = {
-//     message: "Test API is working"
-//   };
-//   return res.json(msgObj);
-// });
-
 authRouter.post("/register", async (req, res) => {
   const { error } = registerValidation(req.body);
   if (error) {
