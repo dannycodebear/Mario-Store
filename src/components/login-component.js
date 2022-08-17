@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import AuthService from "../service/auth-service.js";
 
 const LoginComponent = (props) => {
+  const { currentUser, setCurrentUser } = props;
   //用 props 接過來的要用中括號
-  const { display, setDisplay } = props;
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,13 +24,13 @@ const LoginComponent = (props) => {
   const handleLogin = () => {
     AuthService.login(email, password)
       .then((response) => {
-        // 如果成功登入，將使用者資料存在 LocalStorage 內
+        // 如果成功登入，將使用者資料存在 LocalStorage 內,並抓到 currentUser
         if (response.data.token) {
           localStorage.setItem("user", JSON.stringify(response.data));
         }
         window.alert("Login success");
+        setCurrentUser(AuthService.getCurrentUser());
         navigate("/");
-        setDisplay(3);
       })
       .catch((error) => {
         console.log(error.response);
@@ -38,17 +38,14 @@ const LoginComponent = (props) => {
       });
   };
 
-  const handleDisplay = () => {
-    setDisplay(2);
-    navigate("/register");
-  };
-
   return (
     <div className="register-form">
       <div className="changeMode">
-        <button>登入頁面</button>
-        <button onClick={handleDisplay}>
-          <p>註冊頁面</p>
+        <button>
+          <a href="/login">登入頁面</a>
+        </button>
+        <button>
+          <a href="/register">註冊頁面</a>
         </button>
       </div>
       {/* 若 error message 是 false = 沒有  就不會顯示 */}
@@ -67,7 +64,6 @@ const LoginComponent = (props) => {
       </div>
 
       <div className="divButton">
-        {display === 0 && display === 1 && <button type="submit">Login</button>}
         <button onClick={handleLogin} type="submit">
           Login
         </button>

@@ -1,10 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBarComponent from "./components/navBar-component";
 import HomeComponent from "./components/home-component";
 import CategoriesComponent from "./components/categories-component";
 import RegisterComponent from "./components/register-component";
 import LoginComponent from "./components/login-component";
+import AuthService from "./service/auth-service.js";
 
 // 引入圖片 自動變換
 import Mario from "./photo/Mario.png";
@@ -23,11 +24,8 @@ import TurtleMonster from "./photo/turtle-monster.png";
 import BlueMushroom from "./photo/blue-mushroom.png";
 
 function App() {
-  // 顯示登入和註冊 ＝ 0
-  // 顯示登入 ＝ 1
-  // 顯示註冊 ＝ 2
-  // 顯示登出 ＝ 3
-  const [display, setDisplay] = useState(0);
+  const [currentUser, setCurrentUser] = useState(AuthService.getCurrentUser);
+
   const Images = [Mario, Koopa, Luigi, Peach];
   const itemsPreview = [
     RedMushroom,
@@ -42,27 +40,14 @@ function App() {
 
   return (
     <div className="App">
-      <NavBarComponent display={display} setDisplay={setDisplay} />
+      <NavBarComponent currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <HomeComponent
-              Images={Images}
-              itemsPreview={itemsPreview}
-              display={display}
-              setDisplay={setDisplay}
-            />
-          }
-        />
+        <Route path="/" element={<HomeComponent Images={Images} itemsPreview={itemsPreview} />} />
         <Route path="/categories" element={<CategoriesComponent Images={Images} />} />
-        <Route
-          path="/register"
-          element={<RegisterComponent display={display} setDisplay={setDisplay} />}
-        />
+        <Route path="/register" element={<RegisterComponent />} />
         <Route
           path="/login"
-          element={<LoginComponent display={display} setDisplay={setDisplay} />}
+          element={<LoginComponent currentUser={currentUser} setCurrentUser={setCurrentUser} />}
         />
       </Routes>
     </div>

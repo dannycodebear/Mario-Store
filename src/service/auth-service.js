@@ -21,7 +21,9 @@ class AuthService {
       role
     });
   }
-  getCurrentUser() {}
+  getCurrentUser() {
+    return JSON.parse(localStorage.getItem("user"));
+  }
 }
 
 export default new AuthService();

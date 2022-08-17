@@ -3,14 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import AuthService from "../service/auth-service.js";
 
 const NavBarComponent = (props) => {
-  const { display, setDisplay } = props;
+  const { currentUser, setCurrentUser } = props;
   const navigate = useNavigate();
   // 設定 logout 不需要給 function 包起來
   const handleLogout = () => {
     AuthService.logout();
-    window.alert("Logout success!!");
+    window.alert("Logout success!!  Now you will go to homepage");
     navigate("/");
-    setDisplay(0);
+    setCurrentUser(null);
   };
   return (
     <div>
@@ -22,22 +22,12 @@ const NavBarComponent = (props) => {
           <li>
             <Link to="/">關於</Link>
           </li>
-          {display == 0 && (
-            <li>
-              <Link to="/login">登入 / 註冊</Link>
-            </li>
-          )}
-          {display == 1 && (
-            <li>
-              <Link to="/register">註冊</Link>
-            </li>
-          )}
-          {display == 2 && (
+          {!currentUser && (
             <li>
               <Link to="/login">登入</Link>
             </li>
           )}
-          {display == 3 && (
+          {currentUser && (
             <li>
               <a href="" onClick={handleLogout}>
                 登出
