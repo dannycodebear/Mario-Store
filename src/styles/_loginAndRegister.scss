@@ -43,6 +43,7 @@ div.register-form {
       margin: 1rem 0rem;
     }
   }
+
   div.divButton {
     display: flex;
     flex-wrap: wrap;
@@ -56,6 +57,17 @@ div.register-form {
       border: none;
       background-color: blanchedalmond;
       cursor: pointer;
+    }
+  }
+  // password display
+  div.display {
+    display: flex;
+    align-items: center;
+
+    input {
+      width: 15px;
+      height: 15px;
+      min-width: 1.5rem;
     }
   }
 }
