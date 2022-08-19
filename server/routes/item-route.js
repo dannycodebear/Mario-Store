@@ -49,26 +49,28 @@ itemRouter.get("/", (req, res) => {
 });
 
 // add new items  (Create)
-itemRouter.post("/", upload.single("avatar"), async (req, res) => {
+itemRouter.post("/addItems", upload.single("avatar"), async (req, res) => {
   const { error } = itemValidation(req.body);
   if (error) {
     return res.status(400).send(error.details[0].message);
   }
-  const { id, name, description, price } = req.body;
+  let { id, title, description, price, avatar } = req.body;
   if (req.user.isMember()) {
     return res.status(400).send("Only admin can add new items");
   }
-
-  req.user.avatar = req.file.buffer;
+  avatar = req.file.buffer;
 
   const newItem = new Item({
     id,
-    name,
+    title,
     description,
-    price
+    price,
+    avatar
   });
 
   try {
+    console.log(newItem);
+
     await newItem.save();
     res.status(200).send("New item has been saved.");
   } catch (err) {
@@ -78,7 +80,7 @@ itemRouter.post("/", upload.single("avatar"), async (req, res) => {
 });
 
 // Update items (Update)
-itemRouter.patch("/:id", async (req, res) => {
+itemRouter.patch("/itemsManage/:id", async (req, res) => {
   const { error } = itemValidation(req.body);
   if (error) {
     return res.status(400).send(error.details[0].message);
@@ -108,7 +110,7 @@ itemRouter.patch("/:id", async (req, res) => {
 });
 
 // Delete items (Delete)
-itemRouter.delete("/:id", async (req, res) => {
+itemRouter.delete("/itemsManage/:id", async (req, res) => {
   const { id } = req.params;
   const item = await Item.findOne({ id });
 
