@@ -22,6 +22,12 @@ const NavBarComponent = (props) => {
           <li>
             <Link to="/">關於</Link>
           </li>
+          {currentUser && currentUser.user.role == "admin" && (
+            <li>
+              <Link to="/">商品管理</Link>
+            </li>
+          )}
+
           {!currentUser && (
             <li>
               <Link to="/login">登入</Link>

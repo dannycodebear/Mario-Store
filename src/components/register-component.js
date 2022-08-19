@@ -61,7 +61,7 @@ const RegisterComponent = (props) => {
 
   return (
     <div className="register-form">
-      <div className="changeMode">
+      <div className="changePage">
         <button>
           <a href="/login">登入頁面</a>
         </button>
@@ -77,16 +77,25 @@ const RegisterComponent = (props) => {
           onChange={handleChangeUsername}
           type="text"
           name="username"
+          placeholder=" Jason Chen"
           value={username}
           required
         />
         <p>Email:</p>
-        <input onChange={handleChangeEmail} type="email" name="email" value={email} required />
+        <input
+          onChange={handleChangeEmail}
+          type="email"
+          name="email"
+          placeholder=" 123456@gmail.com"
+          value={email}
+          required
+        />
         <p>Password:</p>
         <input
           onChange={handleChangePassword}
           type={showPassword}
           name="password"
+          placeholder=" *********"
           value={password}
           required
         />
@@ -95,6 +104,7 @@ const RegisterComponent = (props) => {
           onChange={handleChangeSecondPassword}
           type={showPassword}
           name="secondPassword"
+          placeholder=" Please repeat password"
           value={secondPassword}
           required
         />
@@ -108,8 +118,8 @@ const RegisterComponent = (props) => {
         <label for="role">
           <select onChange={handleChangeRole} name="role" id="role" value={role} required>
             <option value=""></option>
-            <option value="member">member</option>
-            <option value="admin">admin</option>
+            <option value="member">Member</option>
+            <option value="admin">Admin</option>
           </select>
         </label>
       </div>

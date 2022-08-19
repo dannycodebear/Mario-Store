@@ -5,6 +5,8 @@ import HomeComponent from "./components/home-component";
 import CategoriesComponent from "./components/categories-component";
 import RegisterComponent from "./components/register-component";
 import LoginComponent from "./components/login-component";
+import AddItemsComponent from "./components/addItemsComponent";
+import ItemsManageComponent from "./components/itemsManageComponent";
 import AuthService from "./service/auth-service.js";
 
 // 引入圖片 自動變換
@@ -48,6 +50,16 @@ function App() {
         <Route
           path="/login"
           element={<LoginComponent currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+        />
+        <Route
+          path="/addItems"
+          element={<AddItemsComponent currentUser={currentUser} setCurrentUser={setCurrentUser} />}
+        />
+        <Route
+          path="/itemsManage"
+          element={
+            <ItemsManageComponent currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          }
         />
       </Routes>
     </div>

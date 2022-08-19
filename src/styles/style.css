@@ -7,6 +7,10 @@ div.homePage div h2 {
   margin-left: 1rem;
 }
 
+div.homePage div.introImage {
+  padding: 2rem;
+}
+
 div.homePage div.itemCategories {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -124,6 +128,16 @@ a:visited {
   color: black;
 }
 
+div.alert-message {
+  border: 1px solid #f8bcbc;
+  border-radius: 5px;
+  background-color: #f8bcbc;
+  color: #f41212;
+  font-size: 20px;
+  padding: 0.5rem;
+  margin: 0.5rem 0rem;
+}
+
 div.navBar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -157,7 +171,7 @@ div.navBar ul li {
 
 div.bar {
   background-color: antiquewhite;
-  margin-bottom: 1rem;
+  margin: 1rem 0rem;
 }
 
 div.bar ul {
@@ -273,7 +287,7 @@ div div.section div.container div.itemImages div.item p.price {
   color: red;
 }
 
-div.register-form div.changeMode button {
+div.register-form div.changePage button {
   margin: 1rem 0rem;
   padding: 0.3rem 1rem;
   border: 1px solid red;
@@ -283,14 +297,9 @@ div.register-form div.changeMode button {
   cursor: pointer;
 }
 
-div.register-form div.alert-message {
-  border: 1px solid #f8bcbc;
-  border-radius: 5px;
-  background-color: #f8bcbc;
-  color: #f41212;
-  font-size: 20px;
-  padding: 0.5rem;
-  margin: 0.5rem 0rem;
+div.register-form div.changePage button a {
+  padding: inherit;
+  margin: -1rem;
 }
 
 div.register-form div.divInput {

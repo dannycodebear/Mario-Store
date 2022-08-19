@@ -40,7 +40,7 @@ const LoginComponent = (props) => {
 
   return (
     <div className="register-form">
-      <div className="changeMode">
+      <div className="changePage">
         <button>
           <a href="/login">登入頁面</a>
         </button>
@@ -52,12 +52,20 @@ const LoginComponent = (props) => {
       {errorMessage && <div className="alert-message">{errorMessage}</div>}
       <div className="divInput">
         <p>Email:</p>
-        <input onChange={handleChangeEmail} type="email" name="email" value={email} required />
+        <input
+          onChange={handleChangeEmail}
+          type="email"
+          name="email"
+          placeholder=" 123456@gmail.com"
+          value={email}
+          required
+        />
         <p>Password:</p>
         <input
           onChange={handleChangePassword}
           type="password"
           name="password"
+          placeholder=" *********"
           value={password}
           required
         />
