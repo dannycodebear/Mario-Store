@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import ItemService from "../service/items.service.js";
+import ItemService from "../service/items.service";
 
 const AddItemsComponent = (props) => {
   const navigate = useNavigate();
@@ -68,10 +68,10 @@ const AddItemsComponent = (props) => {
   };
   return (
     <div>
-      <form action="http://localhost:8080" method="post" enctype="multipart/form-data">
+      <form action="/addItems" method="post" enctype="multipart/form-data">
         <input onChange={handleChangeAvatar} value={avatar} type="file" name="avatar" />
         <button type="submit" onClick={handleChangePost}>
-          提交
+          Submit
         </button>
       </form>
     </div>

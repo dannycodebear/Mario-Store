@@ -16,16 +16,12 @@ class ItemService {
     // formData.append("description", description);
     // formData.append("price", price);
     formData.append("avatar", avatar);
-    return await axios.post(
-      API_URL + "/addItems",
-       formData ,
-      {
-        headers: {
-          Authorization: token,
-          "Content-Type": "multipart/form-data"
-        }
+    return axios.post(API_URL + "/addItems", formData, {
+      headers: {
+        Authorization: token,
+        "Content-Type": "multipart/form-data"
       }
-    );
+    });
   }
 
   patch(id, title, description, price) {
