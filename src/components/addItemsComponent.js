@@ -48,7 +48,8 @@ const AddItemsComponent = (props) => {
   //   }
   // };
 
-  const handleChangePost = () => {
+  const handleChangePost = (e) => {
+    e.preventDefault();
     if (currentUser.user.role !== "admin") {
       window.alert("Member can't not post item!! ");
       navigate("/");
@@ -66,13 +67,24 @@ const AddItemsComponent = (props) => {
         });
     }
   };
+
   return (
+    // <div>
+    //   <form action="/addItems" method="post" enctype="multipart/form-data">
+    //     <input onChange={handleChangeAvatar} value={avatar} type="file" name="avatar" />
+    //     {/* <button type="submit" onClick={handleChangePost}>
+    //       Submit
+    //     </button> */}
+    //     <input onClick={handleChangePost} type="submit" />
+    //   </form>
+    // </div>
     <div>
       <form action="/addItems" method="post" enctype="multipart/form-data">
-        <input onChange={handleChangeAvatar} value={avatar} type="file" name="avatar" />
-        <button type="submit" onClick={handleChangePost}>
-          Submit
-        </button>
+        <input type="file" name="avatar" />
+        {/* <button type="submit" onClick={handleChangePost}>
+        Submit
+      </button> */}
+        <input onClick={handleChangePost} type="submit" />
       </form>
     </div>
   );

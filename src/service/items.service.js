@@ -10,13 +10,13 @@ class ItemService {
       token = "";
     }
 
-    const formData = new FormData();
+    let formData = new FormData();
     // formData.append("id", id);
     // formData.append("title", title);
     // formData.append("description", description);
     // formData.append("price", price);
     formData.append("avatar", avatar);
-    return axios.post(API_URL + "/addItems", formData, {
+    return axios.post(`${API_URL}/addItems`, formData, {
       headers: {
         Authorization: token,
         "Content-Type": "multipart/form-data"

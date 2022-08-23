@@ -1,4 +1,5 @@
 import express from "express";
+import bodyParser from "body-parser";
 const app = express();
 import mongoose from "mongoose";
 import dotenv from "dotenv";
@@ -9,6 +10,7 @@ import { pst } from "./config/passport.js";
 import passport from "passport";
 pst(passport);
 import cors from "cors";
+import path from "path";
 
 mongoose
   .connect(process.env.DB_CONNECT)
@@ -20,12 +22,14 @@ mongoose
   });
 
 // middleware
-app.use(express.static("public/images"));
+app.use(express.static(path.join("public")));
+
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use("/api/user", authRouter);
-app.use("/api/items", passport.authenticate("jwt", { session: false }), itemRouter);
+app.use("/api/items", itemRouter);
 
 app.listen(8080, () => {
   console.log("Server is running on the port 8080");
