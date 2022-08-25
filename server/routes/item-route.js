@@ -61,58 +61,33 @@ itemRouter.get("/", (req, res) => {
 });
 
 // add new items  (Create)
-// itemRouter.post("/addItems", upload.single("avatar"), async (req, res) => {
-//   // const { error } = itemValidation(req.body);
-//   // if (error) {
-//   //   return res.status(400).send(error.details[0].message);
-//   // }
-//   let { id, title, description, price } = req.body;
-//   if (req.user.isMember()) {
-//     return res.status(400).send("Only admin can add new items");
-//   }
-//   console.log(req.file);
-
-//   let avatar = req.file;
-
-//   const newItem = new Item({
-//     id,
-//     title,
-//     description,
-//     price,
-//     avatar
-//   });
-
-//   try {
-//     await newItem.save();
-//     console.log(file);
-//     res.status(200).send("New item has been saved.");
-//   } catch (err) {
-//     res.status(400).send("Error");
-//     console.log(err);
-//   }
-// });
-
 itemRouter.post("/addItems", upload.single("avatar"), async (req, res) => {
+  const { error } = itemValidation(req.body);
+  if (error) {
+    return res.status(400).send(error.details[0].message);
+  }
   let { id, title, description, price } = req.body;
-  // if (req.user.isMember()) {
-  //   return res.status(400).send("Only admin can add new items");
-  // }
+  if (req.user.isMember()) {
+    return res.status(400).send("Only admin can add new items");
+  }
+  console.log(req.file);
 
-  let file = req.file;
+  let avatar = req.file.path;
 
   const newItem = new Item({
     id,
     title,
     description,
     price,
-    file
+    avatar
   });
+
   try {
     await newItem.save();
-    console.log(file);
+    console.log(avatar);
+
     res.status(200).send("New item has been saved.");
   } catch (err) {
-    console.log(file);
     res.status(400).send("Error");
     console.log(err);
   }

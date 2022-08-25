@@ -26,42 +26,22 @@ const AddItemsComponent = (props) => {
   const handleChangeAvatar = (e) => {
     setAvatar(e.target.value);
   };
-  // const handleChangePost = () => {
-  //   if (currentUser.user.role !== "admin") {
-  //     window.alert("Member can't not post item!! ");
-  //     navigate("/");
-  //   } else {
-  //     ItemService.post(id, title, description, price)
-  //       .then(() => {
-  //         window.alert("Post successfully");
-  //         navigate("/");
-  //       })
-  //       .catch((error) => {
-  //         console.log(id, title, description, price);
-
-  //         console.log(error);
-  //         console.log(error.response);
-
-  //         // 顯示 error message 給用戶
-  //         setErrorMessage(error.response.data);
-  //       });
-  //   }
-  // };
-
   const handleChangePost = (e) => {
-    e.preventDefault();
     if (currentUser.user.role !== "admin") {
       window.alert("Member can't not post item!! ");
       navigate("/");
     } else {
-      ItemService.post(avatar)
+      ItemService.post(id, title, description, price)
         .then(() => {
           window.alert("Post successfully");
           navigate("/");
         })
         .catch((error) => {
+          console.log(id, title, description, price);
+
           console.log(error);
           console.log(error.response);
+
           // 顯示 error message 給用戶
           setErrorMessage(error.response.data);
         });
@@ -69,31 +49,10 @@ const AddItemsComponent = (props) => {
   };
 
   return (
-    // <div>
-    //   <form action="/addItems" method="post" enctype="multipart/form-data">
-    //     <input onChange={handleChangeAvatar} value={avatar} type="file" name="avatar" />
-    //     {/* <button type="submit" onClick={handleChangePost}>
-    //       Submit
-    //     </button> */}
-    //     <input onClick={handleChangePost} type="submit" />
-    //   </form>
-    // </div>
-    <div>
-      <form action="/addItems" method="post" enctype="multipart/form-data">
-        <input type="file" name="avatar" />
-        {/* <button type="submit" onClick={handleChangePost}>
-        Submit
-      </button> */}
-        <input onClick={handleChangePost} type="submit" />
-      </form>
-    </div>
-  );
-
-  return (
     <div>
       {errorMessage && <div className="alert-message">{errorMessage}</div>}
-      <div class="form-group">
-        {/* <p>id:</p>
+      <form action="/addItems" method="post" enctype="multipart/form-data">
+        <p>id:</p>
         <input
           onChange={handleChangeId}
           type="number"
@@ -127,13 +86,12 @@ const AddItemsComponent = (props) => {
           placeholder=" 1234"
           value={price}
           required
-        /> */}
-        <input onChange={handleChangeAvatar} type="file" name="avatar" value={avatar} required />
+        />
+        <p>image:</p>
+        <input type="file" name="avatar" onChange={handleChangeAvatar} value={avatar} />
 
-        <button type="submit" onClick={handleChangePost}>
-          提交
-        </button>
-      </div>
+        <input onClick={handleChangePost} type="submit" />
+      </form>
     </div>
   );
 };

@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use("/api/user", authRouter);
-app.use("/api/items", itemRouter);
+app.use("/api/items", passport.authenticate("jwt", { session: false }), itemRouter);
 
 app.listen(8080, () => {
   console.log("Server is running on the port 8080");
