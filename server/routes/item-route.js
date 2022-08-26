@@ -62,11 +62,11 @@ itemRouter.get("/", (req, res) => {
 
 // add new items  (Create)
 itemRouter.post("/addItems", upload.single("avatar"), async (req, res) => {
-  const { error } = itemValidation(req.body);
-  if (error) {
-    return res.status(400).send(error.details[0].message);
-  }
-  let { id, title, description, price } = req.body;
+  // const { error } = itemValidation(req.body);
+  // if (error) {
+  //   return res.status(400).send(error.details[0].message);
+  // }
+  // let { id, title, description, price } = req.body;
   if (req.user.isMember()) {
     return res.status(400).send("Only admin can add new items");
   }
@@ -75,10 +75,10 @@ itemRouter.post("/addItems", upload.single("avatar"), async (req, res) => {
   let avatar = req.file.path;
 
   const newItem = new Item({
-    id,
-    title,
-    description,
-    price,
+    // id,
+    // title,
+    // description,
+    // price,
     avatar
   });
 

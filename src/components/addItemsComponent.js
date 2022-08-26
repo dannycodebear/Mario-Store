@@ -26,19 +26,18 @@ const AddItemsComponent = (props) => {
   const handleChangeAvatar = (e) => {
     setAvatar(e.target.value);
   };
-  const handleChangePost = (e) => {
+  const handleChangePost = () => {
     if (currentUser.user.role !== "admin") {
       window.alert("Member can't not post item!! ");
       navigate("/");
     } else {
-      ItemService.post(id, title, description, price)
+      return ItemService.post(avatar)
         .then(() => {
           window.alert("Post successfully");
           navigate("/");
         })
         .catch((error) => {
-          console.log(id, title, description, price);
-
+          console.log(avatar);
           console.log(error);
           console.log(error.response);
 
@@ -52,7 +51,7 @@ const AddItemsComponent = (props) => {
     <div>
       {errorMessage && <div className="alert-message">{errorMessage}</div>}
       <form action="/addItems" method="post" enctype="multipart/form-data">
-        <p>id:</p>
+        {/* <p>id:</p>
         <input
           onChange={handleChangeId}
           type="number"
@@ -86,7 +85,7 @@ const AddItemsComponent = (props) => {
           placeholder=" 1234"
           value={price}
           required
-        />
+        /> */}
         <p>image:</p>
         <input type="file" name="avatar" onChange={handleChangeAvatar} value={avatar} />
 
