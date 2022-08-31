@@ -10,20 +10,20 @@ itemRouter.use((req, res, next) => {
   next();
 });
 
-const storage = multer.diskStorage({
-  // 設定檔案存取位置
-  destination: function (req, file, cb) {
-    cb(null, "public/images");
-  },
-  // 設定檔案命名方式
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  }
-});
+// const storage = multer.diskStorage({
+//   // 設定檔案存取位置
+//   destination: function (req, file, cb) {
+//     cb(null, "public/images");
+//   },
+//   // 設定檔案命名方式
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname);
+//   }
+// });
 
 // Setting Multer
 const upload = multer({
-  storage: storage,
+  // storage: storage,
   // 限定上傳大小為5Mb
   limit: {
     fileSize: 5000000
@@ -66,26 +66,25 @@ itemRouter.post("/addItems", upload.single("avatar"), async (req, res) => {
   // if (error) {
   //   return res.status(400).send(error.details[0].message);
   // }
-  // let { id, title, description, price } = req.body;
+  let { id, title, description, price } = req.body;
   if (req.user.isMember()) {
     return res.status(400).send("Only admin can add new items");
   }
   console.log(req.file);
 
-  let avatar = req.file.path;
+  let avatar = Item.avatar;
+  avatar = req.file.buffer;
 
   const newItem = new Item({
-    // id,
-    // title,
-    // description,
-    // price,
+    id,
+    title,
+    description,
+    price,
     avatar
   });
 
   try {
     await newItem.save();
-    console.log(avatar);
-
     res.status(200).send("New item has been saved.");
   } catch (err) {
     res.status(400).send("Error");
