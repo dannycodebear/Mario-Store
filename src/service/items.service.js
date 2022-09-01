@@ -2,7 +2,7 @@ import axios from "axios";
 const API_URL = "http://localhost:8080/api/items";
 
 class ItemService {
-  post(avatar) {
+  post(id, title, description, price, avatar) {
     let token;
     if (localStorage.getItem("user")) {
       token = JSON.parse(localStorage.getItem("user")).token;
@@ -10,13 +10,13 @@ class ItemService {
       token = "";
     }
 
-    let formData = new FormData();
-    // formData.append("id", id);
-    // formData.append("title", title);
-    // formData.append("description", description);
-    // formData.append("price", price);
-    formData.append("avatar", avatar);
-    return axios.post(API_URL + "/addItems", formData, {
+    let data = new FormData();
+    data.append("id", id);
+    data.append("title", title);
+    data.append("description", description);
+    data.append("price", price);
+    data.append("avatar", avatar);
+    return axios.post(API_URL + "/addItems", data.data, {
       headers: {
         Authorization: token,
         "Content-Type": "multipart/form-data"

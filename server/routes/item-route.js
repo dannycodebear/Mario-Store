@@ -61,7 +61,7 @@ itemRouter.get("/", (req, res) => {
 });
 
 // add new items  (Create)
-itemRouter.post("/addItems", upload.single("avatar"), async (req, res) => {
+itemRouter.post("/addItems", upload.single("avatar"), async (req, res, next) => {
   // const { error } = itemValidation(req.body);
   // if (error) {
   //   return res.status(400).send(error.details[0].message);
@@ -90,6 +90,7 @@ itemRouter.post("/addItems", upload.single("avatar"), async (req, res) => {
     res.status(400).send("Error");
     console.log(err);
   }
+  next();
 });
 
 // Update items (Update)

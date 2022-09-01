@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
+import axios from "axios";
 import ItemService from "../service/items.service";
+const API_URL = "http://localhost:8080/api/items";
 
 const AddItemsComponent = (props) => {
   const navigate = useNavigate();
@@ -26,18 +28,38 @@ const AddItemsComponent = (props) => {
   const handleChangeAvatar = (e) => {
     setAvatar(e.target.value);
   };
-  const handleChangePost = () => {
+  const handleChangePost = (e) => {
+    e.preventDefault();
     if (currentUser.user.role !== "admin") {
       window.alert("Member can't not post item!! ");
       navigate("/");
     } else {
-      return ItemService.post(avatar)
+      let token;
+      if (localStorage.getItem("user")) {
+        token = JSON.parse(localStorage.getItem("user")).token;
+      } else {
+        token = "";
+      }
+      let data = new FormData();
+      data.append("id", id);
+      data.append("title", title);
+      data.append("description", description);
+      data.append("price", price);
+      data.append("avatar", avatar);
+      return axios
+        .post(API_URL + "/addItems", data, {
+          headers: {
+            Authorization: token
+            // "Content-Type": "multipart/form-data"
+          }
+        })
         .then(() => {
           window.alert("Post successfully");
           navigate("/");
         })
         .catch((error) => {
-          console.log(avatar);
+          console.log(id, title, description, price, avatar);
+          console.log(data);
           console.log(error);
           console.log(error.response);
 
@@ -50,8 +72,8 @@ const AddItemsComponent = (props) => {
   return (
     <div>
       {errorMessage && <div className="alert-message">{errorMessage}</div>}
-      <form action="/addItems" method="post" enctype="multipart/form-data">
-        {/* <p>id:</p>
+      <form action="/addItems" method="post" encType="multipart/form-data">
+        <p>id:</p>
         <input
           onChange={handleChangeId}
           type="number"
@@ -85,11 +107,13 @@ const AddItemsComponent = (props) => {
           placeholder=" 1234"
           value={price}
           required
-        /> */}
+        />
         <p>image:</p>
         <input type="file" name="avatar" onChange={handleChangeAvatar} value={avatar} />
 
-        <input onClick={handleChangePost} type="submit" />
+        <button onClick={handleChangePost} type="submit">
+          提交
+        </button>
       </form>
     </div>
   );
