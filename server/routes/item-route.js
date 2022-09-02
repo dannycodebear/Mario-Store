@@ -66,25 +66,22 @@ itemRouter.post("/addItems", upload.single("avatar"), async (req, res, next) => 
   // if (error) {
   //   return res.status(400).send(error.details[0].message);
   // }
-  let { id, title, description, price } = req.body;
+  let { id, avatar } = req.body;
   if (req.user.isMember()) {
     return res.status(400).send("Only admin can add new items");
   }
-  console.log(req.file);
 
-  let avatar = Item.avatar;
-  avatar = req.file.buffer;
+  Item.avatar = req.file.buffer;
+  avatar = Item.avatar;
 
   const newItem = new Item({
     id,
-    title,
-    description,
-    price,
     avatar
   });
 
   try {
     await newItem.save();
+    console.log(newItem);
     res.status(200).send("New item has been saved.");
   } catch (err) {
     res.status(400).send("Error");
@@ -143,6 +140,17 @@ itemRouter.delete("/itemsManage/:id", async (req, res) => {
   } else {
     res.status(403).send("Only admin can deleted");
   }
+});
+
+// Delete Many items test (Delete)
+itemRouter.delete("/itemsManage", (req, res) => {
+  Item.deleteMany({})
+    .then(() => {
+      res.send("Item has been deleted");
+    })
+    .catch((e) => {
+      res.send(e);
+    });
 });
 
 export default itemRouter;
