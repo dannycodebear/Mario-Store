@@ -2,24 +2,21 @@ import mongoose from "mongoose";
 
 const itemSchema = new mongoose.Schema({
   id: {
-    type: Number,
-    required: true
+    type: Number
   },
   title: {
-    type: String,
-    required: true
+    type: String
   },
   description: {
-    type: String,
-    required: true
+    type: String
   },
   price: {
-    type: Number,
-    required: true
+    type: Number
   },
 
   avatar: {
-    type: Buffer
+    type: Buffer,
+    required: true
   }
 });
 
