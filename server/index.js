@@ -25,7 +25,6 @@ mongoose
 app.use(express.static(path.join("public")));
 
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use("/api/user", authRouter);
