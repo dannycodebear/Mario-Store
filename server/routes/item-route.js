@@ -10,17 +10,6 @@ itemRouter.use((req, res, next) => {
   next();
 });
 
-// const storage = multer.diskStorage({
-//   // 設定檔案存取位置
-//   destination: function (req, file, cb) {
-//     cb(null, "public/images");
-//   },
-//   // 設定檔案命名方式
-//   filename: function (req, file, cb) {
-//     cb(null, file.originalname);
-//   }
-// });
-
 // Setting Multer
 const upload = multer({
   // storage: storage,
