@@ -2,6 +2,20 @@ import axios from "axios";
 const API_URL = "http://localhost:8080/api/items";
 
 class ItemService {
+  get() {
+    let token;
+    if (localStorage.getItem("user")) {
+      token = JSON.parse(localStorage.getItem("user")).token;
+    } else {
+      token = "";
+    }
+    return axios.get(API_URL, {
+      headers: {
+        Authorization: token
+      }
+    });
+  }
+
   post(id, title, description, price, avatar) {
     let token;
     if (localStorage.getItem("user")) {
