@@ -23,7 +23,6 @@ mongoose
 
 // middleware
 app.use(express.static(path.join("public")));
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
