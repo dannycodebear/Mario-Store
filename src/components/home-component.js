@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
+import ItemService from "../service/items.service";
 import { Link } from "react-router-dom";
 
 const HomeComponent = (props) => {
+  let [itemData, setItemData] = useState([]);
   const { Images } = props;
   const { itemsPreview } = props;
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -27,6 +29,14 @@ const HomeComponent = (props) => {
     return () => {
       clearInterval(IntervalId);
     };
+  }, []);
+
+  useEffect(() => {
+    console.log("Using effect");
+    ItemService.get().then((data) => {
+      console.log(data.data);
+      setItemData(data.data);
+    });
   }, []);
 
   return (
@@ -191,6 +201,20 @@ const HomeComponent = (props) => {
             </div>
           </div>
         )}
+        {/* test */}
+        <div>
+          {itemData.map((item) => (
+            <div className="card" style={{ width: "18rem" }}>
+              <div className="card-body">
+                <h5 className="card-title">{item.title}</h5>
+                <p className="card-text">{item.description}</p>
+                <button className="btn btn-primary">{item.price}</button>
+
+                <br />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
