@@ -25,7 +25,7 @@ const itemValidation = (data) => {
     id: Joi.number().min(0).max(9999).required(),
     title: Joi.string().min(2).max(10).required(),
     description: Joi.string().min(5).max(999).required(),
-    price: Joi.number().min(100).required()
+    price: Joi.number().min(10).required()
   });
 
   return schema.validate(data);
