@@ -40,7 +40,7 @@ itemRouter.get("/:id", (req, res) => {
 
 // search all items (Read)
 itemRouter.get("/", (req, res) => {
-  Item.findOne({})
+  Item.find({})
     .then((item) => {
       res.send(item);
     })
@@ -51,11 +51,11 @@ itemRouter.get("/", (req, res) => {
 
 // add new items  (Create)
 itemRouter.post("/addItems", upload.single("avatar"), async (req, res, next) => {
-  // const { error } = itemValidation(req.body);
-  // if (error) {
-  //   return res.status(400).send(error.details[0].message);
-  // }
-  let { id, avatar } = req.body;
+  const { error } = itemValidation(req.body);
+  if (error) {
+    return res.status(400).send(error.details[0].message);
+  }
+  let { id, title, description, price, avatar } = req.body;
   if (req.user.isMember()) {
     return res.status(400).send("Only admin can add new items");
   }
@@ -65,13 +65,15 @@ itemRouter.post("/addItems", upload.single("avatar"), async (req, res, next) => 
 
   const newItem = new Item({
     id,
+    title,
+    description,
+    price,
     avatar
   });
 
   try {
     await newItem.save();
-    console.log(newItem);
-    res.status(200).send("New item has been saved.");
+    res.status(200).send(newItem);
   } catch (err) {
     res.status(400).send("Error");
     console.log(err);
