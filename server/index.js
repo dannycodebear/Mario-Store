@@ -10,7 +10,6 @@ import { pst } from "./config/passport.js";
 import passport from "passport";
 pst(passport);
 import cors from "cors";
-import path from "path";
 
 mongoose
   .connect(process.env.DB_CONNECT)
@@ -22,7 +21,7 @@ mongoose
   });
 
 // middleware
-app.use(express.static(path.join("public")));
+app.use(express.static("public/images"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());

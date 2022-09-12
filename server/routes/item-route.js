@@ -10,9 +10,20 @@ itemRouter.use((req, res, next) => {
   next();
 });
 
+const storage = multer.diskStorage({
+  // 設定檔案存取位置
+  destination: function (req, file, cb) {
+    cb(null, "public/images");
+  },
+  // 設定檔案命名方式
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+
 // Setting Multer
 const upload = multer({
-  // storage: storage,
+  storage: storage,
   // 限定上傳大小為5Mb
   limit: {
     fileSize: 5000000
@@ -60,7 +71,7 @@ itemRouter.post("/addItems", upload.single("avatar"), async (req, res, next) => 
     return res.status(400).send("Only admin can add new items");
   }
 
-  Item.avatar = req.file.buffer;
+  Item.avatar = req.path;
   avatar = Item.avatar;
 
   const newItem = new Item({
