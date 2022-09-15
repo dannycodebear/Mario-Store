@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import ItemService from "../service/items.service";
-import { Link } from "react-router-dom";
 
 const HomeComponent = (props) => {
   let [itemData, setItemData] = useState([]);
@@ -35,6 +34,7 @@ const HomeComponent = (props) => {
     console.log("Using effect");
     ItemService.get().then((data) => {
       console.log(data.data);
+
       setItemData(data.data);
     });
   }, []);
@@ -209,6 +209,7 @@ const HomeComponent = (props) => {
                 <h5 className="card-title">{item.title}</h5>
                 <p className="card-text">{item.description}</p>
                 <button className="btn btn-primary">{item.price}</button>
+                {/* <img src={require(item.avatar.data)} alt="" /> */}
 
                 <br />
               </div>
