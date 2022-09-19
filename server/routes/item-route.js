@@ -10,23 +10,23 @@ itemRouter.use((req, res, next) => {
   next();
 });
 
-const storage = multer.diskStorage({
-  // 設定檔案存取位置
-  destination: function (req, file, cb) {
-    cb(null, "public/images");
-  },
-  // 設定檔案命名方式
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  }
-});
+// const storage = multer.diskStorage({
+//   // 設定檔案存取位置
+//   destination: function (req, file, cb) {
+//     cb(null, "public/images");
+//   },
+//   // 設定檔案命名方式
+//   filename: function (req, file, cb) {
+//     cb(null, file.originalname);
+//   }
+// });
 
 // Setting Multer
 const upload = multer({
-  storage: storage,
-  // 限定上傳大小為5Mb
+  // storage: storage,
+  // 限定上傳大小為2Mb
   limit: {
-    fileSize: 5000000
+    fileSize: 2000000
   },
   fileFilter(req, file, cb) {
     // 限定上傳格式只能有這三種副檔名, $ 配對結尾而已
@@ -55,8 +55,8 @@ itemRouter.get("/", (req, res) => {
     .then((item) => {
       res.send(item);
     })
-    .catch((err) => {
-      res.send(err);
+    .catch((e) => {
+      res.send(e);
     });
 });
 
