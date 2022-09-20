@@ -34,7 +34,6 @@ const HomeComponent = (props) => {
     console.log("Using effect");
     ItemService.get().then((data) => {
       console.log(data.data);
-
       setItemData(data.data);
     });
   }, []);
@@ -209,7 +208,7 @@ const HomeComponent = (props) => {
                 <h5 className="card-title">{item.title}</h5>
                 <p className="card-text">{item.description}</p>
                 <button className="btn btn-primary">{item.price}</button>
-                {/* <img src={require(item.avatar.data)} alt="" /> */}
+                <img src={`data:image/png;base64,${item.avatar.data}`} alt={item.title} />
 
                 <br />
               </div>
